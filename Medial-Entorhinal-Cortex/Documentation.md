@@ -4,7 +4,7 @@ Code to simulate a MEC motif unit.
 
 Tf_Integrator.py:	RK4 integrator from NerveFlow
 
-func_math.py:	1st order differential equation function
+func_math.py:	1st order differential equation function to characterise the gating variables
 
 
 --> mec_motif.py: code to run the MEC motif unit
