@@ -62,18 +62,7 @@ g_inb_is = [1.0] * n_n  # max conductance _is
 
 E_inb = [-80] * n_n  # Reversal Potential ... in mV
 
-# 2) Defining Firing Thresholds
-# F_t = [0.0] * n_n
-
-'''
-# 3) Defining Input Current as function of Time
-def I_inj_t(t):
-    return tf.constant(current_input.T, dtype=tf.float64)[tf.to_int32(t / epsilon)]
-    # Turn indices to integer and extract from matrix
-'''
-
-
-# 4) Defining the currents
+# 2) Defining the currents
 
 ## Excitatory Synaptic Current
 
