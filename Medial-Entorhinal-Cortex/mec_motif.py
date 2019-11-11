@@ -124,35 +124,6 @@ def IL(V):
     return gL * (V - EL)
 
 
-'''
-# 5) Defining the gating variables
-
-def propNa(V):
-    m_0 = tf.Variable([0.0] * n_n, dtype=tf.float64)
-    t_m = tf.Variable([0.0] * n_n, dtype=tf.float64)
-
-    h_0 = tf.Variable([0.0] * n_n, dtype=tf.float64)
-    t_h = tf.Variable([0.0] * n_n, dtype=tf.float64)
-
-    m_0[:2], t_m[:2], h_0[:2], t_h[:2] = HI.propNa(V[:2])
-
-    m_0[2:], t_m[2:], h_0[2:], t_h[2:] = HS.propNa(V[2:])
-
-    return m_0, t_m, h_0, t_h
-
-
-def propK(V):
-    n_0 = tf.Variable([0.0] * n_n, dtype=tf.float64)
-    t_n = tf.Variable([0.0] * n_n, dtype=tf.float64)
-
-    n_0[:2], t_n[:2] = HI.propK(V[:2])
-
-    n_0[2:], t_n[2:] = HS.propK(V[2:])
-
-    return n_0, t_n
-'''
-
-
 # 6) Derivative of the State Vector
 
 def dXdt(X, t):
@@ -278,18 +249,6 @@ def dXdt(X, t):
     F_ext = tf.boolean_mask(tf.reshape(F_ext, (-1,)), inb_mat_is.reshape(-1) == 1)
 
     do_inb_isdt = alpha_inb * (1 - o_inb_is) * F_ext - beta_inb * o_inb_is
-
-    '''
-    do_extdt = [0.0] * n_n
-    do_inb_iidt = [0.0] * n_n
-    do_inb_isdt = [0.0] * n_n
-    ## Updation for fire times ##
-
-    # dfdt = tf.zeros(tf.shape(fire_t), dtype=fire_t.dtype)  # zero change in fire_t
-    
-    # current = tf.concat([dVdt, dmdt, dhdt, dndt, dmsdt, dmhsdt, dmhfdt, do_extdt, do_inb_iidt, do_inb_isdt, dfdt], 0)
-    current = tf.concat([dVdt, dmdt, dhdt, dndt, dmsdt, dmhsdt, dmhfdt, do_extdt, do_inb_iidt, do_inb_isdt], 0)
-    '''
 
     current = tf.concat([dVdt, dmdt, dhdt, dndt, dmsdt, dmhsdt, dmhfdt, do_extdt, do_inb_iidt, do_inb_isdt], 0)
     return current
