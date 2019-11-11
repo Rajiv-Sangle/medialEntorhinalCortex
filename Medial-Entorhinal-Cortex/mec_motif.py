@@ -414,19 +414,3 @@ plt.legend()
 
 plt.tight_layout()
 plt.show()
-'''
-
-#plt.figure(figsize=(12, 17))
-for i in range(0,4,2):
-    plt.subplot(10, 1, i + 1)
-    plt.plot(t, state[:, i])
-    plt.title("MEC motif= {:0.1f}".format(i+1))
-    plt.ylim([-90, 60])
-    plt.xlabel("Time (in ms)")
-    plt.ylabel("Voltage (in mV)")
-'''
-
-#plt.tight_layout()
-plt.show()
-
-#'''
